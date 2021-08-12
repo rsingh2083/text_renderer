@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Effect &mdash; Text Renderer 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dropout" href="dropout.html" />
+    <link rel="prev" title="Effect" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Text Renderer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../note/render_pipeline.html">Image rendering process</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dataset.html">Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../corpus/index.html">Corpus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Effect</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dropout.html">Dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emboss.html">Emboss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motion_blur.html">MotionBlur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line.html">Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padding.html">Padding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../layout/index.html">Layout</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Text Renderer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Effect</a> &raquo;</li>
+        
+      <li>Effect</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/effect/base_effect.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="effect">
+<h1>Effect<a class="headerlink" href="#effect" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="text_renderer.effect.Effect">
+<em class="property">class </em><code class="sig-prename descclassname">text_renderer.effect.</code><code class="sig-name descname">Effect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/text_renderer/effect/base_effect.html#Effect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.Effect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply different augmentations to image.</p>
+<p>E.g. add noise, add dropout, add padding…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>float</em>) – Probability of apply this effect</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="text_renderer.effect.Effect.apply">
+<em class="property">abstract </em><code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img</span><span class="p">:</span> <span class="n">PIL.Image.Image</span></em>, <em class="sig-param"><span class="n">text_bbox</span><span class="p">:</span> <span class="n">text_renderer.utils.bbox.BBox</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/text_renderer/effect/base_effect.html#Effect.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.Effect.apply" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>PILImage</em>) – Image to apply effect</p></li>
+<li><p><strong>text_bbox</strong> (<em>BBox</em>) – bbox of text on input Image</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>PILImage</em> – Image changed</p></li>
+<li><p><em>BBox</em> – Text bbox on image after apply effect.
+Some effects (such as Padding) may modify the relative position of the text in the image.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="text_renderer.effect.Effect.rand_pick">
+<em class="property">static </em><code class="sig-name descname">rand_pick</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pim</span></em>, <em class="sig-param"><span class="n">col</span></em>, <em class="sig-param"><span class="n">row</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/text_renderer/effect/base_effect.html#Effect.rand_pick"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.Effect.rand_pick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randomly reset pixel value at [col, row]</p>
+<p>new_pixel_value = random.randint(0, pixel_value)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pim</strong> (<em>PyAccess</em>) – Get from pil_img.load()</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – </p></li>
+<li><p><strong>row</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="text_renderer.effect.Effects">
+<em class="property">class </em><code class="sig-prename descclassname">text_renderer.effect.</code><code class="sig-name descname">Effects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">effects</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>text_renderer.effect.base_effect.Effect<span class="p">, </span>List<span class="p">[</span>text_renderer.effect.base_effect.Effect<span class="p">]</span><span class="p">, </span>text_renderer.effect.selector.Selector<span class="p">, </span>List<span class="p">[</span>text_renderer.effect.selector.Selector<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/text_renderer/effect/base_effect.html#Effects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.Effects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply multiple effects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>effects</strong> (<a class="reference internal" href="#text_renderer.effect.Effect" title="text_renderer.effect.Effect"><em>Effect</em></a><em> or </em><em>List</em><em>[</em><a class="reference internal" href="#text_renderer.effect.Effect" title="text_renderer.effect.Effect"><em>Effect</em></a><em>]</em>) – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="text_renderer.effect.Effects.apply_effects">
+<code class="sig-name descname">apply_effects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img</span><span class="p">:</span> <span class="n">PIL.Image.Image</span></em>, <em class="sig-param"><span class="n">bbox</span><span class="p">:</span> <span class="n">text_renderer.utils.bbox.BBox</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>PIL.Image.Image<span class="p">, </span>text_renderer.utils.bbox.BBox<span class="p">]</span><a class="reference internal" href="../_modules/text_renderer/effect/base_effect.html#Effects.apply_effects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.Effects.apply_effects" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> – </p></li>
+<li><p><strong>bbox</strong> – bbox of text on input Image</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="text_renderer.effect.NoEffects">
+<em class="property">class </em><code class="sig-prename descclassname">text_renderer.effect.</code><code class="sig-name descname">NoEffects</code><a class="reference internal" href="../_modules/text_renderer/effect/base_effect.html#NoEffects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.NoEffects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Placeholder when you don’t want to apply effects for multi corpus</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="text_renderer.effect.OneOf">
+<em class="property">class </em><code class="sig-prename descclassname">text_renderer.effect.</code><code class="sig-name descname">OneOf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">effects</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Effect<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/text_renderer/effect/selector.html#OneOf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#text_renderer.effect.OneOf" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>effects</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="#text_renderer.effect.Effect" title="text_renderer.effect.Effect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Effect</span></code></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dropout.html" class="btn btn-neutral float-right" title="Dropout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Effect" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, ohmyocr.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
